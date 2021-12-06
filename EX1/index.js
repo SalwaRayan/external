@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const axios = require("axios")
+const characters = require("./characters.json")
 
 const port = 5000
 
@@ -9,8 +10,9 @@ app.listen(port, () => {
 })
 
 app.get('/game-of-thrones/json', (req, res) => {
-  
+  res.send(characters)
 })
+
 app.get('/game-of-thrones/url', (req, res) => {
   axios.get('https://thronesapi.com/api/v2/Characters')
   .then(response => res.json(response.data))
